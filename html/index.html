@@ -1,0 +1,198 @@
+﻿﻿<!DOCTYPE html>
+<html lang="cn">
+<head>
+	<meta charset="utf-8">
+	<title>智能环境监控系统</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,inital-scale=1.0"><!--自适应-->
+	<!--<script type="text/javascript" src="../js/jquery.min.js"></script>-->
+	<script type="text/javascript" src="../js/main.js" charset="gb2312"></script>
+	<script type="text/javascript" src="../js/Chart.js"></script>
+	<script type="text/javascript" src="../js/Chart.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/highcharts.js"></script>
+	<script type="text/javascript" src="../js/exporting.js"></script>
+	<script type="text/javascript" src="../js/export-data.js"></script>
+	<link rel="stylesheet" href="../css/main.css" type="text/css">
+	<link rel="icon" type="../image/x-icon" href="images/favicon.ico">
+	<!--引用百度地图API-->
+	<style type="text/css">
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.iw_poi_title {
+			color: #CC5522;
+			font-size: 14px;
+			font-weight: bold;
+			overflow: hidden;
+			padding-right: 13px;
+			white-space: nowrap
+		}
+
+		.iw_poi_content {
+			font: 12px arial,sans-serif;
+			overflow: visible;
+			padding-top: 4px;
+			white-space: -moz-pre-wrap;
+			word-wrap: break-word
+		}
+	</style>
+	<script type="text/javascript">
+		var i = 0;
+		var o;
+		function nice() {
+			var now = new Date();
+			var h = now.getHours();
+			var m = now.getMinutes();
+			var s = now.getSeconds();
+			h = checktime(h);
+			s = checktime(s);
+			m = checktime(m);
+			document.getElementById('text').innerHTML = h + ":" + m + ":" + s;
+			t = setTimeout('nice()', 1000);
+		}
+		function checktime(n) {
+			if (n < 10) {
+				n = "0" + n;
+			}
+			return n;
+		}
+	</script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+</head>
+<body onload="load(); nice();">
+	<dvi id="body">
+		<div id="head">
+			<iframe id="wea" width="420" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="//i.tianqi.com/index.php?c=code&id=12&icon=1&num=5&site=12"></iframe>
+			<span id="head-title">智能环境监控系统</span>
+			<span id="text" text-align="center" style="
+					text-align: center;
+					color: #ff0000;
+					font-size: 26px;
+					float: right;
+					position: relative;
+					right: 229px;
+					top: 10px;
+				"></span>
+			<p><span id="user-name"></span><span id="exit" onclick="user_exit()">|退出</span"></p>
+		</div>
+		<!--主体-->
+		<div id="ctr-body">
+			<p id="beep-text"><span>报警控制</span></p>
+			<button id="log-title" onclick=""><span>过程显示</span></button>
+			<!--蜂鸣器部分-->
+			<div id="beep-div">
+				<img src="../images/v4.png" alt="" width="80" height="80" id="beep-img" onclick="change_beep_img()">
+				<p id="one"><span>蜂鸣器</span></p>
+				<br />
+				<P id="two">控制蜂鸣用于发出警报</P>
+				<div id="dht11-baojing">
+					<iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
+					<form action="" method="post" target="nm_iframe" name="dht11">
+						<P>温度阈值：<input class="dht11-beep" id="temp-min" name="temp-min" type="text" required="required" min="0" max="100" value="20">℃~<input class="dht11-beep" id="temp-max" name="temp-max" type="text" required="required" min="0" max="100" value="20">℃</P>
+						<P>湿度阈值：<input class="dht11-beep" id="humi-min" name="humi-min" type="text" required="required" min="0" max="100" value="20">%~<input class="dht11-beep" id="humi-max" name="humi-max" type="text" required="required" min="0" max="100" value="20">%</P>
+						<button id="saveBeep" onclick="changeUserInfo()">保存</button>
+					</form>
+					<script type="text/javascript" src="../js/dht11.js" charset="gb2312"></script>
+				</div>
+			</div>
+			<!--led部分-->
+			<div id="led-div">
+				<p id="led-title"><span>LED灯</span></p>
+				<P><center><span id="head-line">控制LED灯用于发出报警闪光</span></center></P>
+				<div id="line"></div>
+				<img id="led-img1" src="../images/lamp.png" alt="" onclick="change_led_img1()">
+				<img id="led-img2" src="../images/lamp.png" alt="" onclick="change_led_img2()">
+				<img id="led-img3" src="../images/lamp.png" alt="" onclick="change_led_img3()">
+				<img id="led-img4" src="../images/lamp.png" alt="" onclick="change_led_img4()">
+				<div id="texts">
+					<button id="one-text" onclick="all_switch()"><span>开关</span></button>
+					<button id="two-text" onclick="run()"><span>跑马灯</span></button>
+					<button id="three-text" onclick="check_led()"><span>系统自检</span></button>
+					<button id="four-text" onclick="error_led()"><sapn>故障</sapn></button>
+				</div>
+			</div>
+			<!--系统日志-->
+			<div id="log">
+				<div id="display-log">
+					<div id="display-log-text-div">
+						<p>1:<span id="log-1-line"></span></p>
+						<p>2:<span id="log-2-line"></span></p>
+						<p>3:<span id="log-3-line"></span></p>
+						<p>4:<span id="log-4-line"></span></p>
+						<p>5:<span id="log-5-line"></span></p>
+						<p>6:<span id="log-6-line"></span></p>
+						<p>7:<span id="log-7-line"></span></p>
+						<p>8:<span id="log-8-line"></span></p>
+						<button id="download-log" onclick="download_log()"><span>显示日志</span></button>
+						<button id="clear-log" onclick="clear_log()"><span>清空</span></button>
+					</div>
+				</div>
+			</div>
+			<div id="dht11">
+				<p id="dht11-title"><span>温湿度监测</span></p>
+				<img id="dht11-img" src="../images/dht11.png" alt="dht11.png" />
+				<p id="temp">温度:<span id="temp-display"></span>度</p>
+				<p id="humi">湿度:<span id="humi-display"></span>度</p>
+			</div>
+		</div>
+		<div id="quxian">
+			<div id="container"></div>
+			<div id="container1"></div>
+			<script src="../js/show_draw.js"></script>
+		</div>
+		
+		<div id="video_ditu">
+			<!--<iframe width="567" scrolling="no" height="390" frameborder="0" src="http://192.168.64.253:8080/?action=stream"></iframe>-->
+			<!--<img width="567" height="390" src="http://192.168.64.253:8080/?action=stream"/>-->
+			<div id="webcam"><noscript><img src="http://192.168.64.253:8080/?action=snapshot" /></noscript></div>
+			<!--百度地图容器-->
+			<div id="dituContent"></div>
+		</div>
+	</dvi>
+</body>
+<script type="text/javascript">
+	//创建和初始化地图函数：
+	function initMap() {
+		createMap();//创建地图
+		setMapEvent();//设置地图事件
+		addMapControl();//向地图添加控件
+	}
+
+	//创建地图函数：
+	function createMap() {
+		var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+		var point = new BMap.Point(126.485506, 43.962991);//定义一个中心点坐标
+		map.centerAndZoom(point, 17);//设定地图的中心点和坐标并将地图显示在地图容器中
+		window.map = map;//将map变量存储在全局
+	}
+
+	//地图事件设置函数：
+	function setMapEvent() {
+		map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+		map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+		map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+		map.enableKeyboard();//启用键盘上下左右键移动地图
+	}
+
+	//地图控件添加函数：
+	function addMapControl() {
+		//向地图中添加缩放控件
+		var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+		map.addControl(ctrl_nav);
+		//向地图中添加缩略图控件
+		//var ctrl_ove = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1 });
+		//map.addControl(ctrl_ove);
+		//向地图中添加比例尺控件
+		var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+		map.addControl(ctrl_sca);
+	}
+
+
+	initMap();//创建和初始化地图
+</script>
+</html>													 
+														 

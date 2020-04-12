@@ -1,0 +1,124 @@
+transupp.o: transupp.c jinclude.h jconfig.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.6.3/include/stddef.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/stdlib.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/features.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/predefs.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/sys/cdefs.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/wordsize.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/gnu/stubs.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/waitflags.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/waitstatus.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/endian.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/endian.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/byteswap.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/sys/types.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/types.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/typesizes.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/time.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/sys/select.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/select.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/sigset.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/time.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/sys/sysmacros.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/pthreadtypes.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/alloca.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/stdio.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/libio.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/_G_config.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/wchar.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.6.3/include/stdarg.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/stdio_lim.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/sys_errlist.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/stdio.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/string.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/xlocale.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/string.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/string2.h \
+ jpeglib.h jmorecfg.h jpegint.h jerror.h transupp.h \
+ /home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/ctype.h
+
+jinclude.h:
+
+jconfig.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.6.3/include/stddef.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/stdlib.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/features.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/predefs.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/sys/cdefs.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/wordsize.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/gnu/stubs.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/waitflags.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/waitstatus.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/endian.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/endian.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/byteswap.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/sys/types.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/types.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/typesizes.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/time.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/sys/select.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/select.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/sigset.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/time.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/sys/sysmacros.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/pthreadtypes.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/alloca.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/stdio.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/libio.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/_G_config.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/wchar.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.6.3/include/stdarg.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/stdio_lim.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/sys_errlist.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/stdio.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/string.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/xlocale.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/string.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/bits/string2.h:
+
+jpeglib.h:
+
+jmorecfg.h:
+
+jpegint.h:
+
+jerror.h:
+
+transupp.h:
+
+/home/ubuntu/zynq/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/../arm-xilinx-linux-gnueabi/libc/usr/include/ctype.h:
