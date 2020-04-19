@@ -1,5 +1,5 @@
 ﻿function load() {
-	dht11();
+	// dht11();
 }
 
 function check_login() {

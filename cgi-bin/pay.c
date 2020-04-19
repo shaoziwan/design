@@ -33,14 +33,38 @@
 
 //--------------------------------------------
 //  帧头 功能码
-char g_input_cmd[]="#1!";//获取商品信息数据
+char g_input_cmd[]="#2!";//获取商品信息数据
 #define PORT 8008
 char ipAddr[] = "192.168.4.2";//单片机IP地址
+
+//分割字符串
+int  departstr(char *str, char depart, char finalstr[][STR_LEN])
+{
+	int len, i;
+	len = strlen(str);
+	int count = 0, j = 0;
+	for (i = 0; i < len; i++)
+	{
+		if (str[i] == depart)
+		{
+			finalstr[count][j] = '\0';
+			count++;
+			j = 0;
+		}
+		else
+		{
+			finalstr[count][j] = str[i];
+			j++;
+		}
+	}
+	finalstr[count][j] = '\0';
+	return count + 1;
+}
 
 int main(int argc, char *argv[])
 {
 	int fd;
-	unsigned char buf[STR_LEN];	
+	unsigned char buf[BUF_SIZE];	
 	int length;
 	char tmp[STR_LEN] = { 0 };
 
@@ -48,9 +72,11 @@ int main(int argc, char *argv[])
 	addr = getenv("REMOTE_ADDR");
 	buf[0]=3;
 	buf[2]=10;
-
+	char *data;
+	data = getenv("QUERY_STRING");
+	char xuebiCountStr[STR_LEN] = {0};
+	char keleCountStr[STR_LEN] = {0};
 	
-
 	//通信套接字
 	int sockfd;
 	int recvBytes;
@@ -91,7 +117,7 @@ int main(int argc, char *argv[])
 		printf("Error/n");
 		
 	}
-
+	strcpy(g_input_cmd,data);
 	//发送数据
 	send(sockfd,g_input_cmd,strlen(g_input_cmd)+1,0);
 	//接收数据
@@ -101,7 +127,8 @@ int main(int argc, char *argv[])
 
 	//显示网页信息
 	// 商品分类 剩余数量
+	// departstr(data, '&', xuebiCountStr);
 	printf("Content-Type:text/html\n\n");
-	printf("{\"xuebi\":%d,\"kele\":%d}\n", buf[2], buf[0]);
+	printf("%s",buf);
 	return 0;
 }
