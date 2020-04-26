@@ -39,12 +39,14 @@ char ipAddr[] = "192.168.4.2";//单片机IP地址
 
 int main(int argc, char *argv[])
 {
+	printf("hello \n");
 	int fd;
 	unsigned char buf[STR_LEN];	
 	int length;
 	char tmp[STR_LEN] = { 0 };
 
 	char *addr;
+	printf("hello \n");
 	addr = getenv("REMOTE_ADDR");
 	buf[0]=3;
 	buf[2]=10;
@@ -64,6 +66,7 @@ int main(int argc, char *argv[])
 
 	//解析并将字符串ip转换成ip结构体中
 	host=gethostbyname(ipAddr);
+	printf("init\n");
 	if(NULL==host)
 	{
 		printf("honst name error!\n");
@@ -84,16 +87,18 @@ int main(int argc, char *argv[])
 	server_addr.sin_addr=*((struct in_addr*)host->h_addr);
 	bzero(&(server_addr.sin_zero),8);
 
+	printf("init ok\n");
 	//请求链接服务器
 	if(connect(sockfd,(struct sockaddr* )&server_addr,sizeof(struct sockaddr))<0)
 	{
 		//连接失败，服务器不在线
-		printf("Error/n");
+		printf("Error\n");
 		
 	}
 
 	//发送数据
 	send(sockfd,g_input_cmd,strlen(g_input_cmd)+1,0);
+	printf("send ok\n");
 	//接收数据
 	recvBytes=recv(sockfd,buf,sizeof(buf),0);
 	//关闭套接字
@@ -102,6 +107,6 @@ int main(int argc, char *argv[])
 	//显示网页信息
 	// 商品分类 剩余数量
 	printf("Content-Type:text/html\n\n");
-	printf("{\"xuebi\":%d,\"kele\":%d}\n", buf[2], buf[0]);
+	printf("{\"xuebi\":%d,\"kele\":%d,\"lvcha\":%d,\"pijiu\":%d,\"hongniu\":%d}\n", buf[0]-'0', buf[1]-'0',buf[2]-'0', buf[3]-'0', buf[4]-'0');
 	return 0;
 }

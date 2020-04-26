@@ -33,7 +33,7 @@
 
 //--------------------------------------------
 //  帧头 功能码
-char g_input_cmd[]="#2!";//获取商品信息数据
+char g_input_cmd[]="#200000!";//获取商品信息数据
 #define PORT 8008
 char ipAddr[] = "192.168.4.2";//单片机IP地址
 
@@ -74,8 +74,12 @@ int main(int argc, char *argv[])
 	buf[2]=10;
 	char *data;
 	data = getenv("QUERY_STRING");
-	char xuebiCountStr[STR_LEN] = {0};
-	char keleCountStr[STR_LEN] = {0};
+	char tmp1[5][STR_LEN] = {0};
+	char xuebiCountStr[2][STR_LEN] = {0};
+	char keleCountStr[2][STR_LEN] = {0};
+	char lvchaCountStr[2][STR_LEN] = {0};
+	char pijiuCountStr[2][STR_LEN] = {0};
+	char hongniuCountStr[2][STR_LEN] = {0};
 	
 	//通信套接字
 	int sockfd;
@@ -104,6 +108,21 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
+	//解析购买的商品数量
+	departstr(data, '&', tmp1);
+	departstr(tmp1[0], '=', xuebiCountStr);
+	departstr(tmp1[1], '=', keleCountStr);
+	departstr(tmp1[2], '=', lvchaCountStr);
+	departstr(tmp1[3], '=', pijiuCountStr);
+	departstr(tmp1[4], '=', hongniuCountStr);
+
+
+	g_input_cmd[2] = xuebiCountStr[1][0];
+	g_input_cmd[3] = keleCountStr[1][0];
+	g_input_cmd[4] = lvchaCountStr[1][0];
+	g_input_cmd[5] = pijiuCountStr[1][0];
+	g_input_cmd[6] = hongniuCountStr[1][0];
+
 	//填充服务器端的ip地址和端口进地址结构体
 	server_addr.sin_family=AF_INET;
 	server_addr.sin_port=htons(PORT);
@@ -117,7 +136,6 @@ int main(int argc, char *argv[])
 		printf("Error/n");
 		
 	}
-	strcpy(g_input_cmd,data);
 	//发送数据
 	send(sockfd,g_input_cmd,strlen(g_input_cmd)+1,0);
 	//接收数据
@@ -127,8 +145,8 @@ int main(int argc, char *argv[])
 
 	//显示网页信息
 	// 商品分类 剩余数量
-	// departstr(data, '&', xuebiCountStr);
+	
 	printf("Content-Type:text/html\n\n");
-	printf("%s",buf);
+	printf("%d",buf[0]-'0');
 	return 0;
 }

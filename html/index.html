@@ -81,6 +81,81 @@
 			}
 			calTotalMoney()
 		}
+
+		//绿茶
+		function lvcha_addBuy(){
+			var total = parseInt(document.getElementById("lvcha_kucun").innerText)
+			var current = parseInt(document.getElementById("lvcha_number").innerText)
+			if(current<total){
+				current++;
+				document.getElementById("lvcha_number").innerText = current
+			}
+			else{
+				alert("没有更多的商品了")
+			}
+			calTotalMoney()
+		}
+
+		function lvcha_subBuy(){
+			var total = parseInt(document.getElementById("lvcha_kucun").innerText)
+			var current = parseInt(document.getElementById("lvcha_number").innerText)
+			if(current != 0){
+				current--;
+				document.getElementById("lvcha_number").innerText = current
+
+			}
+			calTotalMoney()
+		}
+
+		//啤酒
+		function pijiu_addBuy(){
+			var total = parseInt(document.getElementById("pijiu_kucun").innerText)
+			var current = parseInt(document.getElementById("pijiu_number").innerText)
+			if(current<total){
+				current++;
+				document.getElementById("pijiu_number").innerText = current
+			}
+			else{
+				alert("没有更多的商品了")
+			}
+			calTotalMoney()
+		}
+
+		function pijiu_subBuy(){
+			var total = parseInt(document.getElementById("pijiu_kucun").innerText)
+			var current = parseInt(document.getElementById("pijiu_number").innerText)
+			if(current != 0){
+				current--;
+				document.getElementById("pijiu_number").innerText = current
+
+			}
+			calTotalMoney()
+		}
+
+		//红牛
+		function hongniu_addBuy(){
+			var total = parseInt(document.getElementById("hongniu_kucun").innerText)
+			var current = parseInt(document.getElementById("hongniu_number").innerText)
+			if(current<total){
+				current++;
+				document.getElementById("hongniu_number").innerText = current
+			}
+			else{
+				alert("没有更多的商品了")
+			}
+			calTotalMoney()
+		}
+
+		function hongniu_subBuy(){
+			var total = parseInt(document.getElementById("hongniu_kucun").innerText)
+			var current = parseInt(document.getElementById("hongniu_number").innerText)
+			if(current != 0){
+				current--;
+				document.getElementById("hongniu_number").innerText = current
+
+			}
+			calTotalMoney()
+		}
 		//------------------------------------------------------------------------------
 		//计算总金额
 		function calTotalMoney(){
@@ -94,6 +169,18 @@
 			var kele_current = parseInt(document.getElementById("kele_number").innerText)
 			var kele_danjia = parseFloat(document.getElementById("kele_danjia").innerText)
 			totalMoney = kele_current*kele_danjia +totalMoney
+			//绿茶
+			var lvcha_current = parseInt(document.getElementById("lvcha_number").innerText)
+			var lvcha_danjia = parseFloat(document.getElementById("lvcha_danjia").innerText)
+			totalMoney = lvcha_current*lvcha_danjia +totalMoney
+			//啤酒
+			var pijiu_current = parseInt(document.getElementById("pijiu_number").innerText)
+			var pijiu_danjia = parseFloat(document.getElementById("pijiu_danjia").innerText)
+			totalMoney = pijiu_current*pijiu_danjia +totalMoney
+			//红牛
+			var hongniu_current = parseInt(document.getElementById("hongniu_number").innerText)
+			var hongniu_danjia = parseFloat(document.getElementById("hongniu_danjia").innerText)
+			totalMoney = hongniu_current*hongniu_danjia +totalMoney
 
 			document.getElementById("totalMoney").innerText = totalMoney
 		}
@@ -124,6 +211,10 @@
 			var kele_current = parseInt(document.getElementById("kele_number").innerText)
 			info.xuebi = xuebi_current;
 			info.kele = kele_current;
+			info.lvcha = lvcha_current;
+			info.pijiu = pijiu_current;
+			info.hongniu = hongniu_current;
+
 			
 			$.get("../cgi-bin/pay.cgi", info, function (data, status) {
 			if (status == "success") {
@@ -139,7 +230,7 @@
 				alert("购买失败")
 			}
 			});
-			// location.reload()
+			location.reload()
 		}
 		
 		//获取列表信息
@@ -150,6 +241,9 @@
 				var info = JSON.parse(data)
 				document.getElementById("xuebi_kucun").innerText =info.xuebi
 				document.getElementById("kele_kucun").innerText =info.kele  
+				document.getElementById("lvcha_kucun").innerText =info.lvcha
+				document.getElementById("pijiu_kucun").innerText =info.pijiu 
+				document.getElementById("hongniu_kucun").innerText =info.hongniu
 
 			}
 			else {
@@ -183,8 +277,8 @@
 			<div class="shangpin-div" id="xuebi-div">
 				<p  class="shangpin-titile" id="xuebi_title"><span>雪碧</span></p>
 				<img src="../images/xuebi.jpeg" alt="" width="120" height="80" id="xuebi-img">
-				<P >金额：<span id="xuebi_danjia">2.5</span>元</P>
-				<P >库存：<span id="xuebi_kucun">10</span>个</P>
+				<P >金额：<span id="xuebi_danjia">1</span>元</P>
+				<P >库存：<span id="xuebi_kucun">0</span>个</P>
 				<p>数量：<button onclick="xuebi_subBuy()">-</button><span id="xuebi_number">0</span><button onclick="xuebi_addBuy()">+</button></p>
 			</div>
 			<!--可乐部分-->
@@ -192,8 +286,32 @@
 				<p class="shangpin-titile" id="kele-title"><span>可乐</span></p>
 				<img src="../images/kele.jpg" alt="" width="120" height="80" id="kele-img">
 				<P >金额：<span id="kele_danjia">3</span>元</P>
-				<P >库存：<span id="kele_kucun">15</span>个</P>
+				<P >库存：<span id="kele_kucun">0</span>个</P>
 				<p>数量：<button onclick="kele_subBuy()">-</button><span id="kele_number">0</span><button onclick="kele_addBuy()">+</button></p>
+			</div>
+			<!--绿茶部分-->
+			<div class="shangpin-div" id="lvcha-div">
+				<p class="shangpin-titile" id="lvcha-title"><span>绿茶</span></p>
+				<img src="../images/lvcha.jpg" alt="" width="120" height="80" id="lvcha-img">
+				<P >金额：<span id="lvcha_danjia">4</span>元</P>
+				<P >库存：<span id="lvcha_kucun">0</span>个</P>
+				<p>数量：<button onclick="lvcha_subBuy()">-</button><span id="lvcha_number">0</span><button onclick="lvcha_addBuy()">+</button></p>
+			</div>
+			<!--啤酒部分-->
+			<div class="shangpin-div" id="pijiu-div">
+				<p class="shangpin-titile" id="pijiu-title"><span>啤酒</span></p>
+				<img src="../images/pijiu.jpg" alt="" width="120" height="80" id="pijiu-img">
+				<P >金额：<span id="pijiu_danjia">5</span>元</P>
+				<P >库存：<span id="pijiu_kucun">0</span>个</P>
+				<p>数量：<button onclick="pijiu_subBuy()">-</button><span id="pijiu_number">0</span><button onclick="pijiu_addBuy()">+</button></p>
+			</div>
+			<!--红牛部分-->
+			<div class="shangpin-div" id="hongniu-div">
+				<p class="shangpin-titile" id="hongniu-title"><span>红牛</span></p>
+				<img src="../images/hongniu.jpeg" alt="" width="120" height="80" id="hongniu-img">
+				<P >金额：<span id="hongniu_danjia">6</span>元</P>
+				<P >库存：<span id="hongniu_kucun">0</span>个</P>
+				<p>数量：<button onclick="hongniu_subBuy()">-</button><span id="hongniu_number">0</span><button onclick="hongniu_addBuy()">+</button></p>
 			</div>
 			<!-- 结算行 -->
 			<div id="moneydiv">
